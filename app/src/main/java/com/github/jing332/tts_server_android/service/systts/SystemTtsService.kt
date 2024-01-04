@@ -82,7 +82,7 @@ class SystemTtsService : TextToSpeechService(), TextToSpeechManager.Listener {
         }
     }
 
-    private val mCurrentLanguage: MutableList<String> = mutableListOf("zho", "CHN", "")
+    private val mCurrentLanguage: MutableList<String> = mutableListOf("deu", "DEU", "")
 
 
     private val mTtsManager: TextToSpeechManager by lazy {
@@ -141,9 +141,7 @@ class SystemTtsService : TextToSpeechService(), TextToSpeechManager.Listener {
     }
 
     override fun onIsLanguageAvailable(lang: String?, country: String?, variant: String?): Int {
-        return if (Locale.SIMPLIFIED_CHINESE.isO3Language == lang || Locale.US.isO3Language == lang) {
-            if (Locale.SIMPLIFIED_CHINESE.isO3Country == country || Locale.US.isO3Country == country) TextToSpeech.LANG_COUNTRY_AVAILABLE else TextToSpeech.LANG_AVAILABLE
-        } else TextToSpeech.LANG_NOT_SUPPORTED
+        return TextToSpeech.LANG_AVAILABLE
     }
 
     override fun onGetLanguage(): Array<String> {
